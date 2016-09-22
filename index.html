@@ -2,6 +2,7 @@
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="app.js"></script>
+        <script src="concat.js"></script>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     
@@ -24,9 +25,34 @@
         <p>
         
         {{ctrl.input1}} 
+    
         {{ctrl.input2}}
     
         </p>
+        
+        </div>
+        
+        <hr/>
+
+        <h1>Concatenation App</h1>
+
+        <div ng-controller="ConcCtrl as con">
+        
+            <input type="text" ng-model="con.input3"></input> 
+            
+            <span>+</span> 
+            
+            <input type="text" ng-model="con.input4"></input>
+            
+            <button ng-click="con.showResult()">=</button> <span ng-bind="con.resultValue"></span>
+        
+        
+        
+        <p ng-bind="con.input3"></p> 
+    
+        <p ng-bind="con.input4"></p>
+    
+        
         
         </div>
         

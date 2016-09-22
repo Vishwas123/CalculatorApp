@@ -1,4 +1,4 @@
-var app = angular.module("calculator", []);
+var app = angular.module("calculator", ["MyConcatenationModule"]);
 app.controller("CalculatorCtrl", CalculatorCtrl);
 
 function CalculatorCtrl() {
