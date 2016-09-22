@@ -1,18 +1,22 @@
 <html ng-app="calculator">
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-        <script src="app.js"></script>
+        <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
+        <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
         <script src="concat.js"></script>
+        <script src="todo.js"></script>
+        <script src="app.js"></script>
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     
     <body>
         <h1>Calculator App</h1>
+        
         <div ng-controller="CalculatorCtrl as ctrl">
         
-        <input type="text" ng-model="ctrl.input1"></input>
+        <input type="text" placeholder="First Number" ng-model="ctrl.input1"></input>
         <span>{{ctrl.selectedOption}}</span>
-        <input type="text" ng-model="ctrl.input2"></input>
+        <input type="text" placeholder="Second Number" ng-model="ctrl.input2"></input>
         <button ng-click="ctrl.showResult()">=</button> <span ng-bind="ctrl.resultValue"></span>
         <p>
         Choose Operator: 
@@ -22,13 +26,7 @@
             <button ng-click="ctrl.buttonClicked('/')"> / </button>
         </p>
         
-        <p>
-        
-        {{ctrl.input1}} 
-    
-        {{ctrl.input2}}
-    
-        </p>
+        <p> {{ctrl.input1}}  {{ctrl.input2}} </p>
         
         </div>
         
@@ -38,24 +36,43 @@
 
         <div ng-controller="ConcCtrl as con">
         
-            <input type="text" ng-model="con.input3"></input> 
-            
+            <input type="text" placeholder="First String" ng-model="con.input3"></input> 
             <span>+</span> 
-            
-            <input type="text" ng-model="con.input4"></input>
-            
+            <input type="text" placeholder="Second String" ng-model="con.input4"></input>
             <button ng-click="con.showResult()">=</button> <span ng-bind="con.resultValue"></span>
-        
-        
-        
-        <p ng-bind="con.input3"></p> 
-    
-        <p ng-bind="con.input4"></p>
-    
-        
+            <p ng-bind="con.input3"></p> 
+            <p ng-bind="con.input4"></p>
         
         </div>
         
+        <hr/>
+
+        <h1> Tags Creation </h1>
+        
+        <div ng-controller="TagsDemoCtrl as demo">
+        <tags-input ng-model="demo.tags"></tags-input>
+        </div>
+        
+        <hr/>
+
+        <h1> Todo App </h1>
+        
+        <div ng-controller="toDoCtrl as tod">
+            
+            <h3>Add a Todo: </h3>
+            <input type="text" ng-model="tod.item"></input>
+            <p><button ng-click="tod.addItems()">Add</button></p>
+            <span ng-bind="tod.item"></span>
+            <h3>Your Todos: </h3>
+                <div ng-repeat="todo in tod.todos track by $index">
+                {{$index +1}}.<span ng-hide="tod.editMode" ng-bind="todo"></span> 
+                    <input ng-model="todo" ng-hide="!tod.editMode" type="text"></input>
+                    <button ng-hide="tod.editMode" ng-click="tod.deleteItem($index)">Delete</button>
+                </div>
+            <button ng-hide="tod.editMode" ng-click="tod.editItems()">Edit</button>
+            <button ng-hide="!tod.editMode" ng-click="tod.editItems()">Done</button>
+
+        </div>     
     
     </body>
     
