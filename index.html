@@ -1,0 +1,32 @@
+<html ng-app="calculator">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    
+    <body>
+        <h1>Calculator App</h1>
+        <div ng-controller="CalculatorCtrl as ctrl">
+        
+        <input type="text" ng-model="ctrl.input1"></input>
+        <input type="text" ng-model="ctrl.input2"></input>
+        <button>=</button>
+        <p ng-bind="resultValue"></p>
+        <p>
+        Choose Operator: <button>+</button> <button>-</button> <button>*</button> <button>/</button>
+        </p>
+        
+        <p>
+        
+            {{ctrl.input1}} 
+        {{ctrl.input2}}
+    
+        </p>
+        
+        </div>
+        
+    
+    </body>
+    
+</html>
